@@ -1,14 +1,82 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+  <ion-navbar hideBackButton="true" text-center>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Hanul cu Ponei</ion-title>
+    <ion-buttons end> <button ion-button  (click)="openShoppingCart()">
+      <ion-icon  name="cart">
+        <!--<span class="qty">{{cartQty}} </span>-->
+      </ion-icon>
+      <ion-label *ngIf="cartQty>0">
+         <span padding-left="1px" item-right class="qty">
+     {{cartQty}} RON
+    </span>
+      </ion-label>
+
+    </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content no-padding>
+  <ion-grid no-padding>
+    <ion-row no-padding="" >
+        <div class="img-container">
+          <img text-center=""
+               src="https://firebasestorage.googleapis.com/v0/b/hanul-cu-ponei.appspot.com/o/Categorii%2Fmeniu1-890x593.jpg?alt=media&token=c56c058b-5a13-4c7c-819f-9d856faf5a3a" class="full-image">
+          <!-- amazon here-->
+        </div>
+    </ion-row>
+
+    <ion-row no-padding="">
+      <!--*ngIf="comandaDeInca >= 0"-->
+      <ion-col text-center="" class="myAnnounce" *ngIf="comandaDeInca == 0">
+        <ion-label>
+          Comanda de inca {{ comandaDeInca }} RON pentru a atinge suma minima
+        </ion-label>
+      </ion-col>
+    </ion-row>
+
+      <!--<ion-row no-padding="" >-->
+        <!--<ion-col col>-->
+          <!--<div margin-left="2px">-->
+            <!--<img text-center="" src="https://firebasestorage.googleapis.com/v0/b/sanziana-71537.appspot.com/o/meniuri%2Fbeverage-breakfast-brunch-1385748.jpg?alt=media&token=1738e9fc-1a00-4ed2-99e5-bb2d8a08568e" class="full-image">-->
+            <!--&lt;!&ndash; amazon here&ndash;&gt;-->
+          <!--</div>-->
+        <!--</ion-col>-->
+        <!--<ion-col col >-->
+          <!--<div padding-left="2px">-->
+            <!--<img text-center=""-->
+                 <!--src="https://firebasestorage.googleapis.com/v0/b/sanziana-71537.appspot.com/o/meniuri%2Fbeverage-breakfast-brunch-1385748.jpg?alt=media&token=1738e9fc-1a00-4ed2-99e5-bb2d8a08568e" class="full-image">-->
+          <!--</div>-->
+        <!--</ion-col >-->
+        <!--<ion-col col-4>-->
+          <!--<div padding-left="2px" margin-right="2px">-->
+            <!--<img text-center="" src="https://firebasestorage.googleapis.com/v0/b/sanziana-71537.appspot.com/o/meniuri%2Fbeverage-breakfast-brunch-1385748.jpg?alt=media&token=1738e9fc-1a00-4ed2-99e5-bb2d8a08568e" class="full-image">-->
+
+            <!--&lt;!&ndash; amazon here&ndash;&gt;-->
+          <!--</div>-->
+        <!--</ion-col>-->
+
+      <!--</ion-row>-->
+
+    <ion-row wrap padding="" >
+      <ion-col col-6 *ngFor="let categorie of categorii" >
+        <button style="background-color: #f4f4f4">
+          <div (click)="categorieClick(categorie)" padding-bottom="14px">
+            <img class="circle-pic" [src]="categorie.photoURL">
+            <label  style="font-size: small" >{{categorie.nume}}</label>
+          </div>
+        </button>
+        <!--<img class="circle-pic" [src]="file_uri" padding="">-->
+      </ion-col>
+    </ion-row>
+
+
+
+
+
+
+  </ion-grid>
 </ion-content>
